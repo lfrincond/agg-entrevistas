@@ -538,7 +538,6 @@
           doneText: 'We sent the calendar invitation with the Google Meet link to <b data-done-email></b>. Please also check your spam folder.',
           doneSign: 'Interview with <a class="inline-link" href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a> · AGG Geophysics.',
           tz: 'Times shown in Colombia time (GMT−5).',
-          tzLocal: 'Times shown in Colombia time (GMT−5). Your local time is shown underneath.',
           free: n => n === 1 ? '1 slot' : n + ' slots', full: 'Full',
           selected: 'Selected: ',
           errors: {
@@ -555,7 +554,6 @@
         },
         es: {
           tz: 'Horarios en hora de Colombia (GMT−5).',
-          tzLocal: 'Horarios en hora de Colombia (GMT−5). Debajo verás tu hora local.',
           free: n => n === 1 ? '1 espacio' : n + ' espacios', full: 'Completo',
           sending: 'Reservando…',
           selected: 'Seleccionado: ',
@@ -598,7 +596,7 @@
         });
         document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
         document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
-        $('[data-tz-note]').textContent = showLocal ? t('tzLocal') : t('tz');
+        $('[data-tz-note]').textContent = t('tz');
         $('[data-done-email]') && ($('[data-done-email]').textContent = $('[name=email]').value.trim());
         renderDays();
         renderSlots();
