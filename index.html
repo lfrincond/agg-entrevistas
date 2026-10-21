@@ -491,6 +491,7 @@
           <div class="success-mark" aria-hidden="true">✓</div>
           <h2 data-i18n-html="doneTitle">¡Listo! <span>Nos vemos pronto.</span></h2>
           <p class="when" data-done-when></p>
+          <p data-done-meet-wrap hidden><span data-i18n="meetLabel">Enlace de la videollamada:</span> <a class="inline-link" data-done-meet target="_blank" rel="noopener"></a></p>
           <p data-i18n-html="doneText">Enviamos la invitación de calendario con el enlace de Google Meet a <b data-done-email></b>. Revisa también tu carpeta de spam.</p>
           <p data-i18n-html="doneSign">Entrevista con <a class="inline-link" href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a> · AGG Geophysics.</p>
         </div>
@@ -529,6 +530,7 @@
           age: 'Age',
           available: 'I confirm I am available to start from 5 November 2026.',
           consent: 'I authorise AGG to process my personal data solely for this recruitment process (Colombian Law 1581 of 2012).',
+          meetLabel: 'Video call link:',
           requiredNote: 'All fields are required. To book, complete the form and accept the processing of your personal data.',
           submit: 'Book interview', sending: 'Booking…',
           fine: 'One booking per person. To reschedule, reply to the calendar invitation.',
@@ -774,6 +776,11 @@
           $('[data-done-when]').textContent = slotLabel(state.slot);
           applyLang(state.lang);
           $('[data-done-email]').textContent = payload.email;
+          if (data.meet) {
+            $('[data-done-meet]').href = data.meet;
+            $('[data-done-meet]').textContent = data.meet.replace(/^https?:\/\//, '');
+            $('[data-done-meet-wrap]').hidden = false;
+          }
           $('[data-form-panel]').hidden = true;
           $('[data-success]').hidden = false;
           $('[data-success]').scrollIntoView({ behavior: 'smooth', block: 'center' });
