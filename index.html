@@ -400,7 +400,7 @@
         <p class="eyebrow" data-i18n="eyebrow">Proceso de selección · Geofísico(a) Junior</p>
         <h1 id="hero-title" data-i18n-html="title">Fuiste seleccionado(a) para una entrevista. <span>Agenda tu espacio.</span></h1>
         <p class="intro" data-i18n-html="intro">
-          Gracias por tu interés en AGG. Elige el día y la hora de tu entrevista virtual de 20 minutos con
+          Gracias por tu interés en AGG. Elige el día y la hora de tu entrevista virtual de 15 minutos con
           <a href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a>.
           Recibirás la invitación de calendario con el enlace de videollamada en tu correo.
         </p>
@@ -416,7 +416,7 @@
       <section class="booking" aria-label="Reserva">
         <div class="panel">
           <p class="step-label"><b>01</b><span data-i18n="s1">Fecha y hora</span></p>
-          <h2 data-i18n-html="pickTitle">Elige un espacio. <span>20 min.</span></h2>
+          <h2 data-i18n-html="pickTitle">Elige un espacio. <span>15 min.</span></h2>
           <p class="tz-note" data-tz-note></p>
           <p class="demo-banner" data-demo hidden data-i18n="demo">Modo demostración: falta conectar el backend (API_URL). Las reservas no se guardan.</p>
 
@@ -511,12 +511,12 @@
         en: {
           eyebrow: 'Recruitment · Junior Geophysicist',
           title: 'You have been selected for an interview. <span>Book your slot.</span>',
-          intro: 'Thank you for your interest in AGG. Choose the day and time of your 20-minute video interview with <a href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a>. You will receive a calendar invitation with the video-call link by email.',
+          intro: 'Thank you for your interest in AGG. Choose the day and time of your 15-minute video interview with <a href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a>. You will receive a calendar invitation with the video-call link by email.',
           f1t: 'Start date', f1d: '5 November 2026',
           f2t: 'Profiles', f2d: 'Geologists, engineers, geophysicists',
           f3t: 'Experience', f3d: 'Graduates, under 3 years',
           f4t: 'A plus', f4d: 'Programming skills',
-          s1: 'Date and time', pickTitle: 'Pick a slot. <span>20 min.</span>',
+          s1: 'Date and time', pickTitle: 'Pick a slot. <span>15 min.</span>',
           demo: 'Demo mode: the backend (API_URL) is not connected yet. Bookings are not saved.',
           loading: 'Loading availability…',
           loadError: 'We could not load availability. Please reload the page in a few minutes.',
@@ -608,9 +608,9 @@
         const dates = ['2026-10-22', '2026-10-23'];
         const out = [];
         dates.forEach((d, i) => {
-          for (let m = 420; m + 20 <= 600; m += 20) {
+          for (let m = 420; m + 15 <= 600; m += 15) {
             const key = `${d}T${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
-            out.push({ key, start: new Date(key + ':00-05:00').toISOString(), available: (m / 20 + i) % 4 !== 0 });
+            out.push({ key, start: new Date(key + ':00-05:00').toISOString(), available: (m / 15 + i) % 5 !== 0 });
           }
         });
         return out;
@@ -687,7 +687,7 @@
       }
 
       function slotLabel(s) {
-        const end = new Date(new Date(s.start).getTime() + 20 * 60000).toISOString();
+        const end = new Date(new Date(s.start).getTime() + 15 * 60000).toISOString();
         const time = o => fmt(o, { hour: '2-digit', minute: '2-digit', hour12: false });
         return `${cap(fmt(s.start, { weekday: 'long', day: 'numeric', month: 'long' }))} · ${time(s.start)}–${time(end)} (COT)`;
       }
