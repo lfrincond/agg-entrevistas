@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="AGG — Geophysics. Agenda tu entrevista para el cargo de Geofísico(a) Junior.">
+    <meta name="theme-color" content="#f5f5f7">
+    <title>Entrevistas — AGG Geophysics</title>
+    <link rel="icon" href="assets/agg-favicon.png" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="assets/agg-favicon.png">
+    <style>
+      :root {
+        --ink: #101113;
+        --muted: #68686d;
+        --paper: #f5f5f7;
+        --white: #ffffff;
+        --line: rgba(16, 17, 19, 0.14);
+        --accent: #d95428;
+        --accent-soft: #f1aa73;
+        --accent-wash: #fff1e3;
+        --deep: #18231f;
+        --radius: 30px;
+        --page: min(1200px, calc(100vw - 48px));
+        --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        overflow-x: clip;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      button, input, select { font: inherit; color: inherit; }
+      button { -webkit-tap-highlight-color: transparent; }
+
+      .site-header {
+        position: sticky;
+        z-index: 20;
+        top: 0;
+        background: rgba(245, 245, 247, 0.82);
+        border-bottom: 1px solid rgba(16, 17, 19, 0.08);
+        backdrop-filter: saturate(180%) blur(18px);
+        -webkit-backdrop-filter: saturate(180%) blur(18px);
+      }
+
+      .nav-shell {
+        width: var(--page);
+        height: 64px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 730; }
+      .brand-logo { width: 102px; height: auto; display: block; }
+      .brand-label { color: var(--muted); font-weight: 560; letter-spacing: .02em; }
+
+      .language-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 570;
+        letter-spacing: .04em;
+      }
+
+      .language-switcher button {
+        padding: 6px 2px;
+        border: 0;
+        background: none;
+        color: inherit;
+        letter-spacing: inherit;
+        cursor: pointer;
+      }
+
+      .language-switcher button:hover,
+      .language-switcher .is-active { color: var(--ink); }
+      .language-switcher .is-active { font-weight: 720; }
+
+      main { width: var(--page); margin: 0 auto; padding: clamp(48px, 9vw, 110px) 0 96px; }
+
+      .eyebrow {
+        margin: 0 0 20px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1, h2 { margin: 0; letter-spacing: -0.055em; line-height: 0.94; }
+      h1 { font-size: clamp(44px, 7vw, 96px); font-weight: 720; max-width: 14ch; }
+      h1 span, h2 span { color: #909095; }
+      h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; }
+
+      .intro {
+        max-width: 640px;
+        margin: clamp(22px, 3vw, 34px) 0 0;
+        color: #47474b;
+        font-size: clamp(18px, 1.65vw, 22px);
+        letter-spacing: -0.023em;
+        line-height: 1.38;
+      }
+
+      .intro a, .inline-link { color: var(--accent); font-weight: 620; }
+      .intro a:hover, .inline-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+      .facts {
+        margin: clamp(40px, 6vw, 72px) 0 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--line);
+      }
+
+      .facts div { padding: 18px 24px 0 0; }
+      .facts div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+      .facts dt { font-size: 13px; color: var(--muted); }
+      .facts dd { margin: 4px 0 0; font-size: 15px; font-weight: 650; letter-spacing: -0.01em; }
+
+      .booking {
+        margin-top: clamp(56px, 8vw, 96px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 20px;
+        align-items: start;
+      }
+
+      .panel {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: clamp(24px, 3.4vw, 44px);
+      }
+
+      .step-label {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        margin: 0 0 18px;
+        font-size: 13px;
+        font-weight: 650;
+        color: var(--muted);
+      }
+
+      .step-label b { color: var(--accent); font-weight: 700; letter-spacing: .08em; }
+      .step-label + h2 { margin-bottom: 26px; }
+
+      .tz-note { margin: -12px 0 22px; color: var(--muted); font-size: 14px; }
+
+      .days {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+        gap: 8px;
+      }
+
+      .day, .slot {
+        border: 1px solid var(--line);
+        background: var(--white);
+        border-radius: 16px;
+        cursor: pointer;
+        transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+      }
+
+      .day {
+        padding: 12px 10px;
+        display: grid;
+        gap: 2px;
+        text-align: left;
+      }
+
+      .day small { color: var(--muted); font-size: 12px; text-transform: capitalize; }
+      .day strong { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; }
+      .day span { font-size: 12px; color: var(--muted); }
+
+      .day:hover:not(:disabled), .slot:hover:not(:disabled) { border-color: var(--ink); }
+
+      .day[aria-pressed="true"], .slot[aria-pressed="true"] {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--white);
+      }
+
+      .day[aria-pressed="true"] small, .day[aria-pressed="true"] span { color: rgba(255, 255, 255, 0.7); }
+
+      .day:disabled, .slot:disabled {
+        cursor: not-allowed;
+        color: #b3b3b8;
+        background: var(--paper);
+        border-color: transparent;
+      }
+
+      .day:disabled small, .day:disabled span { color: #b3b3b8; }
+      .slot:disabled { text-decoration: line-through; }
+
+      .slots-wrap { margin-top: 28px; padding-top: 26px; border-top: 1px solid var(--line); }
+      .slots-title { margin: 0 0 14px; font-size: 15px; font-weight: 650; }
+
+      .slots {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+        gap: 8px;
+      }
+
+      .slot { padding: 12px 8px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+      .slot small { display: block; font-size: 11px; font-weight: 500; opacity: .7; }
+
+      .placeholder { color: var(--muted); font-size: 15px; margin: 0; }
+
+      .selection {
+        margin: 0 0 24px;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: var(--accent-wash);
+        color: #7a2f15;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .selection.is-empty { background: var(--paper); color: var(--muted); font-weight: 500; }
+
+      form { display: grid; gap: 16px; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+      label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: #47474b; }
+
+      input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--white);
+        font-size: 16px;
+        font-weight: 450;
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      select {
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+        background-position: calc(100% - 20px) 21px, calc(100% - 15px) 21px;
+        background-size: 5px 5px;
+        background-repeat: no-repeat;
+      }
+
+      input:focus, select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(217, 84, 40, 0.14);
+      }
+
+      .check {
+        grid-template-columns: 20px 1fr;
+        align-items: start;
+        gap: 10px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--accent); }
+
+      .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+      .submit {
+        margin-top: 6px;
+        min-height: 52px;
+        border: 0;
+        border-radius: 99px;
+        background: var(--accent);
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 650;
+        cursor: pointer;
+        transition: background 180ms ease, opacity 180ms ease;
+      }
+
+      .submit:hover:not(:disabled) { background: #c2471f; }
+      .submit:disabled { opacity: .45; cursor: not-allowed; }
+
+      .error {
+        margin: 0;
+        padding: 12px 16px;
+        border-radius: 14px;
+        background: #fde8e4;
+        color: #9b2c12;
+        font-size: 14px;
+        font-weight: 550;
+      }
+
+      .fine { margin: 0; color: var(--muted); font-size: 13px; }
+
+      form label:not(.hp) > span::after { content: " *"; color: var(--accent); }
+      .is-touched:invalid { border-color: #d0432b; }
+      .required-note { margin: 0; color: #47474b; font-size: 13px; font-weight: 600; }
+
+      .demo-banner {
+        margin: 0 0 18px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: #18231f;
+        color: #f1ebe4;
+        font-size: 13px;
+      }
+
+      .success { display: grid; gap: 18px; }
+      .success-mark {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--accent);
+        color: var(--white);
+        font-size: 26px;
+      }
+      .success p { margin: 0; color: #47474b; font-size: 17px; line-height: 1.45; }
+      .success .when {
+        padding: 18px 20px;
+        border-radius: 18px;
+        background: var(--paper);
+        color: var(--ink);
+        font-weight: 650;
+        font-size: 18px;
+      }
+
+      .loading { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 15px; }
+      .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--line);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 800ms linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .site-footer {
+        width: var(--page);
+        margin: 0 auto;
+        padding: 26px 0 40px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      [hidden] { display: none !important; }
+
+      @media (max-width: 900px) {
+        .booking { grid-template-columns: 1fr; }
+        .facts { grid-template-columns: 1fr 1fr; }
+        .facts div:nth-child(3) { padding-left: 0; border-left: 0; }
+        .facts div:nth-child(n+3) { margin-top: 18px; }
+      }
+
+      @media (max-width: 560px) {
+        :root { --page: calc(100vw - 32px); --radius: 24px; }
+        .brand-label { display: none; }
+        .row { grid-template-columns: 1fr; }
+        .facts { grid-template-columns: 1fr; }
+        .facts div, .facts div + div { padding: 14px 0 0; border-left: 0; margin-top: 0 !important; }
+        .facts div + div { border-top: 1px solid var(--line); margin-top: 14px !important; }
+        .site-footer { flex-direction: column; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; animation: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="https://www.aggconsultores.com" aria-label="AGG — Geophysics">
+          <img class="brand-logo" src="assets/agg-logo.webp" alt="" width="900" height="299">
+          <span class="brand-label">— GEOPHYSICS</span>
+        </a>
+        <div class="language-switcher" role="group" aria-label="Idioma">
+          <button class="is-active" type="button" data-lang="es" lang="es" aria-pressed="true">ES</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section aria-labelledby="hero-title">
+        <p class="eyebrow" data-i18n="eyebrow">Proceso de selección · Geofísico(a) Junior</p>
+        <h1 id="hero-title" data-i18n-html="title">Fuiste seleccionado(a) para una entrevista. <span>Agenda tu espacio.</span></h1>
+        <p class="intro" data-i18n-html="intro">
+          Gracias por tu interés en AGG. Elige el día y la hora de tu entrevista virtual de 20 minutos con
+          <a href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a>.
+          Recibirás la invitación de calendario con el enlace de videollamada en tu correo.
+        </p>
+
+        <dl class="facts">
+          <div><dt data-i18n="f1t">Inicio</dt><dd data-i18n="f1d">5 de noviembre de 2026</dd></div>
+          <div><dt data-i18n="f2t">Perfiles</dt><dd data-i18n="f2d">Geólogos, ingenieros, geofísicos</dd></div>
+          <div><dt data-i18n="f3t">Experiencia</dt><dd data-i18n="f3d">Graduados, menos de 3 años</dd></div>
+          <div><dt data-i18n="f4t">Valor agregado</dt><dd data-i18n="f4d">Habilidades de programación</dd></div>
+        </dl>
+      </section>
+
+      <section class="booking" aria-label="Reserva">
+        <div class="panel">
+          <p class="step-label"><b>01</b><span data-i18n="s1">Fecha y hora</span></p>
+          <h2 data-i18n-html="pickTitle">Elige un espacio. <span>20 min.</span></h2>
+          <p class="tz-note" data-tz-note></p>
+          <p class="demo-banner" data-demo hidden data-i18n="demo">Modo demostración: falta conectar el backend (API_URL). Las reservas no se guardan.</p>
+
+          <div data-loading class="loading"><span class="spinner" aria-hidden="true"></span><span data-i18n="loading">Cargando disponibilidad…</span></div>
+          <p class="error" data-load-error hidden data-i18n="loadError">No pudimos cargar la disponibilidad. Recarga la página en unos minutos.</p>
+
+          <div class="days" data-days role="group" aria-label="Días disponibles"></div>
+
+          <div class="slots-wrap">
+            <p class="slots-title" data-slots-title></p>
+            <div class="slots" data-slots role="group" aria-label="Horarios"></div>
+            <p class="placeholder" data-slots-placeholder data-i18n="pickDay">Selecciona un día para ver los horarios.</p>
+          </div>
+        </div>
+
+        <div class="panel" data-form-panel>
+          <p class="step-label"><b>02</b><span data-i18n="s2">Tus datos</span></p>
+          <h2 data-i18n-html="formTitle">Confirma tu <span>reserva.</span></h2>
+          <div style="height: 26px"></div>
+
+          <p class="selection is-empty" data-selection data-i18n="noSelection">Aún no has elegido un horario.</p>
+
+          <form data-form novalidate>
+            <label><span data-i18n="name">Nombre completo</span>
+              <input type="text" name="name" autocomplete="name" required minlength="3">
+            </label>
+            <div class="row">
+              <label><span data-i18n="email">Correo electrónico</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label><span data-i18n="phone">Teléfono</span>
+                <input type="tel" name="phone" autocomplete="tel" required placeholder="+57 300 000 0000">
+              </label>
+            </div>
+            <label><span data-i18n="profession">Profesión</span>
+              <select name="profession" required>
+                <option value="" data-i18n="choose">Selecciona…</option>
+                <option value="Geólogo(a)" data-i18n="p1">Geólogo(a)</option>
+                <option value="Ingeniero(a)" data-i18n="p2">Ingeniero(a)</option>
+                <option value="Geofísico(a)" data-i18n="p3">Geofísico(a)</option>
+              </select>
+            </label>
+            <div class="row">
+              <label><span data-i18n="gender">Género</span>
+                <select name="gender" required>
+                  <option value="" data-i18n="choose">Selecciona…</option>
+                  <option value="Femenino" data-i18n="g1">Femenino</option>
+                  <option value="Masculino" data-i18n="g2">Masculino</option>
+                </select>
+              </label>
+              <label><span data-i18n="age">Edad</span>
+                <input type="number" name="age" inputmode="numeric" min="18" max="80" required>
+              </label>
+            </div>
+            <label class="hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+            <label class="check"><input type="checkbox" name="available" required>
+              <span data-i18n="available">Confirmo que tengo disponibilidad para iniciar a partir del 5 de noviembre de 2026.</span>
+            </label>
+            <label class="check"><input type="checkbox" name="consent" required>
+              <span data-i18n="consent">Autorizo a AGG el tratamiento de mis datos personales únicamente para este proceso de selección (Ley 1581 de 2012).</span>
+            </label>
+
+            <p class="error" data-form-error hidden></p>
+            <p class="required-note" data-i18n="requiredNote">Todos los campos son obligatorios. Para reservar debes completar el formulario y aceptar el tratamiento de datos personales.</p>
+            <button class="submit" type="submit" disabled data-submit data-i18n="submit">Reservar entrevista</button>
+            <p class="fine" data-i18n="fine">Una reserva por persona. Si necesitas reprogramar, responde a la invitación de calendario.</p>
+          </form>
+        </div>
+
+        <div class="panel success" data-success hidden>
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <h2 data-i18n-html="doneTitle">¡Listo! <span>Nos vemos pronto.</span></h2>
+          <p class="when" data-done-when></p>
+          <p data-i18n-html="doneText">Enviamos la invitación de calendario con el enlace de Google Meet a <b data-done-email></b>. Revisa también tu carpeta de spam.</p>
+          <p data-i18n-html="doneSign">Entrevista con <a class="inline-link" href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a> · AGG Geophysics.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 AGG — Geophysics</span>
+      <a href="https://www.aggconsultores.com" target="_blank" rel="noopener">www.aggconsultores.com</a>
+    </footer>
+
+    <script>
+      // Paste the Apps Script web app URL here (ends in /exec). Empty = demo mode.
+      const API_URL = '';
+      const TIMEZONE = 'America/Bogota';
+
+      const I18N = {
+        en: {
+          eyebrow: 'Recruitment · Junior Geophysicist',
+          title: 'You have been selected for an interview. <span>Book your slot.</span>',
+          intro: 'Thank you for your interest in AGG. Choose the day and time of your 20-minute video interview with <a href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a>. You will receive a calendar invitation with the video-call link by email.',
+          f1t: 'Start date', f1d: '5 November 2026',
+          f2t: 'Profiles', f2d: 'Geologists, engineers, geophysicists',
+          f3t: 'Experience', f3d: 'Graduates, under 3 years',
+          f4t: 'A plus', f4d: 'Programming skills',
+          s1: 'Date and time', pickTitle: 'Pick a slot. <span>20 min.</span>',
+          demo: 'Demo mode: the backend (API_URL) is not connected yet. Bookings are not saved.',
+          loading: 'Loading availability…',
+          loadError: 'We could not load availability. Please reload the page in a few minutes.',
+          pickDay: 'Select a day to see the available times.',
+          s2: 'Your details', formTitle: 'Confirm your <span>booking.</span>',
+          noSelection: 'You have not picked a time yet.',
+          name: 'Full name', email: 'Email', phone: 'Phone', profession: 'Profession',
+          choose: 'Select…', p1: 'Geologist', p2: 'Engineer', p3: 'Geophysicist',
+          gender: 'Gender', g1: 'Female', g2: 'Male',
+          age: 'Age',
+          available: 'I confirm I am available to start from 5 November 2026.',
+          consent: 'I authorise AGG to process my personal data solely for this recruitment process (Colombian Law 1581 of 2012).',
+          requiredNote: 'All fields are required. To book, complete the form and accept the processing of your personal data.',
+          submit: 'Book interview', sending: 'Booking…',
+          fine: 'One booking per person. To reschedule, reply to the calendar invitation.',
+          doneTitle: 'All set! <span>See you soon.</span>',
+          doneText: 'We sent the calendar invitation with the Google Meet link to <b data-done-email></b>. Please also check your spam folder.',
+          doneSign: 'Interview with <a class="inline-link" href="https://www.linkedin.com/in/felipe-rincond" target="_blank" rel="noopener">Felipe Rincón</a> · AGG Geophysics.',
+          tz: 'Times shown in Colombia time (GMT−5).',
+          tzLocal: 'Times shown in Colombia time (GMT−5). Your local time is shown underneath.',
+          free: n => n === 1 ? '1 slot' : n + ' slots', full: 'Full',
+          selected: 'Selected: ',
+          errors: {
+            slot_taken: 'Someone just booked that time. Please pick another one.',
+            already_booked: 'There is already a booking with this email. To change it, reply to your calendar invitation.',
+            invalid_name: 'Please enter your full name.', invalid_email: 'Please enter a valid email.',
+            invalid_phone: 'Please enter a valid phone number.', invalid_profession: 'Please select your profession.',
+            invalid_gender: 'Please select an option for gender.', invalid_age: 'Please enter a valid age.',
+            not_available: 'Please confirm your availability from 5 November 2026.',
+            no_consent: 'Please authorise the processing of your data.', no_slot: 'Please pick a time first.',
+            busy: 'The system is busy. Please try again in a moment.',
+            default: 'Something went wrong. Please try again or write to felipe@aggconsultores.com.'
+          }
+        },
+        es: {
+          tz: 'Horarios en hora de Colombia (GMT−5).',
+          tzLocal: 'Horarios en hora de Colombia (GMT−5). Debajo verás tu hora local.',
+          free: n => n === 1 ? '1 espacio' : n + ' espacios', full: 'Completo',
+          sending: 'Reservando…',
+          selected: 'Seleccionado: ',
+          errors: {
+            slot_taken: 'Alguien acaba de reservar ese horario. Por favor elige otro.',
+            already_booked: 'Ya existe una reserva con este correo. Para cambiarla, responde a la invitación de calendario.',
+            invalid_name: 'Escribe tu nombre completo.', invalid_email: 'Escribe un correo válido.',
+            invalid_phone: 'Escribe un teléfono válido.', invalid_profession: 'Selecciona tu profesión.',
+            invalid_gender: 'Selecciona una opción de género.', invalid_age: 'Escribe una edad válida.',
+            not_available: 'Confirma tu disponibilidad a partir del 5 de noviembre de 2026.',
+            no_consent: 'Autoriza el tratamiento de tus datos.', no_slot: 'Primero elige un horario.',
+            busy: 'El sistema está ocupado. Intenta de nuevo en un momento.',
+            default: 'Algo salió mal. Intenta de nuevo o escribe a felipe@aggconsultores.com.'
+          }
+        }
+      };
+
+      const $ = s => document.querySelector(s);
+      const state = { lang: 'es', slots: [], day: null, slot: null, demo: !API_URL };
+      const original = {};
+      const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const showLocal = localTz && new Date().toLocaleString('en-US', { timeZone: localTz, hour: 'numeric' })
+        !== new Date().toLocaleString('en-US', { timeZone: TIMEZONE, hour: 'numeric' });
+
+      document.querySelectorAll('[data-i18n], [data-i18n-html]').forEach(el => {
+        original[el.dataset.i18n || el.dataset.i18nHtml] = el.dataset.i18nHtml ? el.innerHTML : el.textContent;
+      });
+
+      const t = key => (I18N[state.lang][key] !== undefined ? I18N[state.lang][key] : original[key]);
+      const locale = () => (state.lang === 'es' ? 'es-CO' : 'en-GB');
+      const fmt = (iso, opts, tz = TIMEZONE) => new Intl.DateTimeFormat(locale(), { timeZone: tz, ...opts }).format(new Date(iso));
+      const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+      function applyLang(lang) {
+        state.lang = lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-lang]').forEach(b => {
+          b.classList.toggle('is-active', b.dataset.lang === lang);
+          b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+        });
+        document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+        document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+        $('[data-tz-note]').textContent = showLocal ? t('tzLocal') : t('tz');
+        $('[data-done-email]') && ($('[data-done-email]').textContent = $('[name=email]').value.trim());
+        renderDays();
+        renderSlots();
+        renderSelection();
+        try { localStorage.setItem('agg-interview-lang', lang); } catch (e) {}
+      }
+
+      function demoSlots() {
+        const dates = ['2026-10-22', '2026-10-23'];
+        const out = [];
+        dates.forEach((d, i) => {
+          for (let m = 420; m + 20 <= 600; m += 20) {
+            const key = `${d}T${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+            out.push({ key, start: new Date(key + ':00-05:00').toISOString(), available: (m / 20 + i) % 4 !== 0 });
+          }
+        });
+        return out;
+      }
+
+      async function loadSlots() {
+        $('[data-loading]').hidden = false;
+        $('[data-load-error]').hidden = true;
+        try {
+          if (state.demo) {
+            state.slots = demoSlots();
+          } else {
+            const res = await fetch(API_URL + '?action=slots', { cache: 'no-store' });
+            const data = await res.json();
+            if (!data.ok) throw new Error('bad response');
+            state.slots = data.slots;
+          }
+        } catch (err) {
+          $('[data-load-error]').hidden = false;
+          state.slots = [];
+        }
+        $('[data-loading]').hidden = true;
+        if (state.slot && !state.slots.some(s => s.key === state.slot.key && s.available)) state.slot = null;
+        if (!state.day) state.day = (state.slots.find(s => s.available) || {}).key?.slice(0, 10) || null;
+        renderDays();
+        renderSlots();
+        renderSelection();
+      }
+
+      function byDay() {
+        const map = new Map();
+        state.slots.forEach(s => {
+          const d = s.key.slice(0, 10);
+          if (!map.has(d)) map.set(d, []);
+          map.get(d).push(s);
+        });
+        return map;
+      }
+
+      function renderDays() {
+        const wrap = $('[data-days]');
+        wrap.innerHTML = '';
+        byDay().forEach((slots, d) => {
+          const free = slots.filter(s => s.available).length;
+          const iso = slots[0].start;
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'day';
+          b.disabled = free === 0;
+          b.setAttribute('aria-pressed', String(state.day === d));
+          b.innerHTML = `<small>${fmt(iso, { weekday: 'short' })}</small><strong>${fmt(iso, { day: 'numeric' })}</strong><span>${fmt(iso, { month: 'short' })} · ${free ? t('free')(free) : t('full')}</span>`;
+          b.addEventListener('click', () => { state.day = d; renderDays(); renderSlots(); });
+          wrap.appendChild(b);
+        });
+      }
+
+      function renderSlots() {
+        const wrap = $('[data-slots]');
+        const slots = byDay().get(state.day) || [];
+        wrap.innerHTML = '';
+        $('[data-slots-placeholder]').hidden = slots.length > 0;
+        $('[data-slots-title]').textContent = slots.length ? cap(fmt(slots[0].start, { weekday: 'long', day: 'numeric', month: 'long' })) : '';
+        slots.forEach(s => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'slot';
+          b.disabled = !s.available;
+          b.setAttribute('aria-pressed', String(state.slot && state.slot.key === s.key));
+          const local = showLocal ? `<small>${fmt(s.start, { hour: '2-digit', minute: '2-digit', hour12: false }, localTz)}</small>` : '';
+          b.innerHTML = fmt(s.start, { hour: '2-digit', minute: '2-digit', hour12: false }) + local;
+          b.addEventListener('click', () => { state.slot = s; renderSlots(); renderSelection(); });
+          wrap.appendChild(b);
+        });
+      }
+
+      function slotLabel(s) {
+        const end = new Date(new Date(s.start).getTime() + 20 * 60000).toISOString();
+        const time = o => fmt(o, { hour: '2-digit', minute: '2-digit', hour12: false });
+        return `${cap(fmt(s.start, { weekday: 'long', day: 'numeric', month: 'long' }))} · ${time(s.start)}–${time(end)} (COT)`;
+      }
+
+      function renderSelection() {
+        const el = $('[data-selection]');
+        el.classList.toggle('is-empty', !state.slot);
+        el.textContent = state.slot ? t('selected') + slotLabel(state.slot) : t('noSelection');
+        updateSubmit();
+      }
+
+      function updateSubmit() {
+        const f = $('[data-form]');
+        $('[data-submit]').disabled = clientValidate(f) !== '';
+      }
+
+      function showError(code) {
+        const el = $('[data-form-error]');
+        const errs = I18N[state.lang].errors;
+        el.textContent = errs[code] || errs.default;
+        el.hidden = false;
+      }
+
+      function clientValidate(f) {
+        if (!state.slot) return 'no_slot';
+        if (f.name.value.trim().length < 3) return 'invalid_name';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.value.trim())) return 'invalid_email';
+        if (f.phone.value.replace(/\D/g, '').length < 7) return 'invalid_phone';
+        if (!f.profession.value) return 'invalid_profession';
+        if (!f.gender.value) return 'invalid_gender';
+        const age = Number(f.age.value);
+        if (!Number.isInteger(age) || age < 18 || age > 80) return 'invalid_age';
+        if (!f.available.checked) return 'not_available';
+        if (!f.consent.checked) return 'no_consent';
+        return '';
+      }
+
+      $('[data-form]').addEventListener('input', updateSubmit);
+      $('[data-form]').addEventListener('change', updateSubmit);
+      $('[data-form]').addEventListener('focusout', e => e.target.matches('input, select') && e.target.classList.add('is-touched'));
+
+      $('[data-form]').addEventListener('submit', async e => {
+        e.preventDefault();
+        const f = e.currentTarget;
+        $('[data-form-error]').hidden = true;
+        const invalid = clientValidate(f);
+        if (invalid) return showError(invalid);
+
+        const btn = $('[data-submit]');
+        btn.disabled = true;
+        btn.textContent = t('sending');
+        const payload = {
+          slot: state.slot.key,
+          name: f.name.value.trim(),
+          email: f.email.value.trim(),
+          phone: f.phone.value.trim(),
+          profession: f.profession.value,
+          gender: f.gender.value,
+          age: Number(f.age.value),
+          available: f.available.checked,
+          consent: f.consent.checked,
+          website: f.website.value,
+          lang: state.lang
+        };
+
+        try {
+          let data;
+          if (state.demo) {
+            await new Promise(r => setTimeout(r, 700));
+            data = { ok: true };
+          } else {
+            const res = await fetch(API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify(payload)
+            });
+            data = await res.json();
+          }
+          if (!data.ok) {
+            showError(data.error);
+            if (data.error === 'slot_taken') loadSlots();
+            return;
+          }
+          $('[data-done-when]').textContent = slotLabel(state.slot);
+          applyLang(state.lang);
+          $('[data-done-email]').textContent = payload.email;
+          $('[data-form-panel]').hidden = true;
+          $('[data-success]').hidden = false;
+          $('[data-success]').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (err) {
+          showError('default');
+        } finally {
+          btn.textContent = t('submit');
+          updateSubmit();
+        }
+      });
+
+      document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+      // Personalised links: ?n=Name&e=email&lang=en prefill the form.
+      const params = new URLSearchParams(location.search);
+      if (params.get('n')) $('[name=name]').value = params.get('n');
+      if (params.get('e')) $('[name=email]').value = params.get('e');
+      let startLang = params.get('lang');
+      if (!startLang) { try { startLang = localStorage.getItem('agg-interview-lang'); } catch (e) {} }
+
+      $('[data-demo]').hidden = !state.demo;
+      applyLang(startLang === 'en' ? 'en' : 'es');
+      loadSlots();
+    </script>
+  </body>
+</html>
